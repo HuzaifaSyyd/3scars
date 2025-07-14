@@ -1,0 +1,5 @@
+import ProtectedRoute from "@/components/protected-route"
+
+export default function CarDetailLayout({ children }) {
+  return <ProtectedRoute requiredRole="vendor">{children}</ProtectedRoute>
+}
