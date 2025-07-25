@@ -568,10 +568,7 @@ export default function ProfilePage() {
           <TabsContent value="customers" className="space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Users className="h-5 w-5" />
-                  Customer Database ({customers.length} customers)
-                </CardTitle>
+                
                 <CardDescription>All customers who have purchased cars from you</CardDescription>
               </CardHeader>
               <CardContent>
