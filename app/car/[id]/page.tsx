@@ -418,7 +418,7 @@ export default function CarDetailsPage() {
           </div>
 
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full grid-cols-3 mb-8 bg-white shadow-lg border-0 h-14">
+            <TabsList className="grid w-full grid-cols-4 mb-8 bg-white shadow-lg border-0 h-14">
               {tabsToShow.map((tab) => (
                 <TabsTrigger
                   key={tab}
