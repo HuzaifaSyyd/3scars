@@ -427,7 +427,7 @@ export default function ProfilePage() {
         <Tabs defaultValue="overview" className="space-y-6">
           <div>
             <h1 className="text-3xl font-bold text-gray-900">Profile & Business Overview</h1>
-            <div className="text-gray-600 mt-1">Manage your account settings and view your business performance</div>
+            <p className="text-gray-600 mt-1">Manage your account settings and view your business performance</p>
           </div>
 
           <TabsList className="grid w-full grid-cols-3">
@@ -444,12 +444,12 @@ export default function ProfilePage() {
                   <div className="flex items-center">
                     <Car className="h-8 w-8 text-purple-600" />
                     <div className="ml-4">
-                      <div className="text-sm font-medium text-gray-600">Total Cars</div>
+                      <p className="text-sm font-medium text-gray-600">Total Cars</p>
                       <div className="text-2xl font-bold text-gray-900">
                         {statsLoading ? (
                           <div className="animate-pulse bg-gray-200 h-6 w-8 rounded"></div>
                         ) : (
-                          <span>{dashboardStats.totalCars}</span>
+                          <p>{dashboardStats.totalCars}</p>
                         )}
                       </div>
                     </div>
@@ -462,7 +462,7 @@ export default function ProfilePage() {
                   <div className="flex items-center">
                     <TrendingUp className="h-8 w-8 text-green-600" />
                     <div className="ml-4">
-                      <div className="text-sm font-medium text-gray-600">Available</div>
+                      <p className="text-sm font-medium text-gray-600">Available</p>
                       <div className="text-2xl font-bold text-gray-900">
                         {statsLoading ? (
                           <div className="animate-pulse bg-gray-200 h-6 w-8 rounded"></div>
@@ -480,14 +480,14 @@ export default function ProfilePage() {
                   <div className="flex items-center">
                     <Calendar className="h-8 w-8 text-red-600" />
                     <div className="ml-4">
-                      <div className="text-sm font-medium text-gray-600">Sold</div>
-                      <div className="text-2xl font-bold text-gray-900">
+                      <p className="text-sm font-medium text-gray-600">Sold</p>
+                      <p className="text-2xl font-bold text-gray-900">
                         {statsLoading ? (
                           <div className="animate-pulse bg-gray-200 h-6 w-8 rounded"></div>
                         ) : (
                           dashboardStats.soldCars
                         )}
-                      </div>
+                      </p>
                     </div>
                   </div>
                 </CardContent>
@@ -498,14 +498,14 @@ export default function ProfilePage() {
                   <div className="flex items-center">
                     <IndianRupee className="h-8 w-8 text-yellow-600" />
                     <div className="ml-4">
-                      <div className="text-sm font-medium text-gray-600">Total Revenue</div>
-                      <div className="text-2xl font-bold text-gray-900">
+                      <p className="text-sm font-medium text-gray-600">Total Revenue</p>
+                      <p className="text-2xl font-bold text-gray-900">
                         {statsLoading ? (
                           <div className="animate-pulse bg-gray-200 h-6 w-16 rounded"></div>
                         ) : (
                           formatPrice(dashboardStats.totalRevenue)
                         )}
-                      </div>
+                      </p>
                     </div>
                   </div>
                 </CardContent>
@@ -541,16 +541,16 @@ export default function ProfilePage() {
                             <Car className="h-6 w-6 text-purple-600" />
                           </div>
                           <div>
-                            <div className="font-medium text-gray-900">
+                            <p className="font-medium text-gray-900">
                               {sale.car_brand} {sale.car_model} ({sale.car_year})
-                            </div>
-                            <div className="text-sm text-gray-500">
+                            </p>
+                            <p className="text-sm text-gray-500">
                               Sold to {sale.client_name} • {formatDate(sale.sale_date)}
-                            </div>
+                            </p>
                           </div>
                         </div>
                         <div className="text-right">
-                          <div className="font-semibold text-green-600">{formatPrice(sale.sale_price)}</div>
+                          <p className="font-semibold text-green-600">{formatPrice(sale.sale_price)}</p>
                         </div>
                       </div>
                     ))}
@@ -558,7 +558,7 @@ export default function ProfilePage() {
                 ) : (
                   <div className="text-center py-8">
                     <Car className="h-12 w-12 text-gray-300 mx-auto mb-2" />
-                    <div className="text-gray-500">No sales yet</div>
+                    <p className="text-gray-500">No sales yet</p>
                   </div>
                 )}
               </CardContent>
@@ -595,9 +595,9 @@ export default function ProfilePage() {
                   <div className="space-y-4">
                     {customers.map((customer) => (
                       <div key={customer.id} className="border rounded-lg p-4 hover:bg-gray-50 transition-colors">
-                        <div className="flex items-start justify-between">
-                          <div className="flex items-start space-x-4">
-                            <Avatar className="h-12 w-12">
+                        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between space-y-4 lg:space-y-0">
+                          <div className="flex items-start space-x-4 flex-1">
+                            <Avatar className="h-12 w-12 flex-shrink-0">
                               <AvatarFallback className="bg-gradient-to-r from-blue-500 to-purple-600 text-white">
                                 {customer.client_name
                                   .split(" ")
@@ -606,8 +606,8 @@ export default function ProfilePage() {
                                   .toUpperCase()}
                               </AvatarFallback>
                             </Avatar>
-                            <div className="flex-1">
-                              <div className="flex items-center gap-2 mb-1">
+                            <div className="flex-1 min-w-0">
+                              <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-1">
                                 <h3 className="font-semibold text-gray-900">{customer.client_name}</h3>
                                 <Badge className={getPaymentMethodBadge(customer.payment_method)}>
                                   {customer.payment_method.replace("_", " ").toUpperCase()}
@@ -616,35 +616,42 @@ export default function ProfilePage() {
 
                               <div className="space-y-1 text-sm text-gray-600">
                                 <div className="flex items-center gap-2">
-                                  <Mail className="h-4 w-4" />
-                                  <span>{customer.client_email}</span>
+                                  <Mail className="h-4 w-4 flex-shrink-0" />
+                                  <span className="break-all">{customer.client_email}</span>
                                 </div>
                                 {customer.client_phone && (
                                   <div className="flex items-center gap-2">
-                                    <Phone className="h-4 w-4" />
+                                    <Phone className="h-4 w-4 flex-shrink-0" />
                                     <span>{customer.client_phone}</span>
                                   </div>
                                 )}
                                 <div className="flex items-center gap-2">
-                                  <Car className="h-4 w-4" />
+                                  <Car className="h-4 w-4 flex-shrink-0" />
                                   <span>
                                     {customer.car_brand} {customer.car_model} ({customer.car_year}) -{" "}
                                     {customer.car_color}
                                   </span>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                  <Calendar className="h-4 w-4" />
+                                  <Calendar className="h-4 w-4 flex-shrink-0" />
                                   <span>Purchased on {formatDate(customer.sale_date)}</span>
                                 </div>
                                 {customer.client_address && (
-                                  <div className="text-xs text-gray-500 mt-1">Address: {customer.client_address}</div>
+                                  <div className="text-xs text-gray-500 mt-1 break-words">
+                                    Address: {customer.client_address}
+                                  </div>
                                 )}
                               </div>
                             </div>
                           </div>
-                          <div className="text-right">
-                            <div className="text-lg font-bold text-green-600">{formatPrice(customer.sale_price)}</div>
-                            <div className="text-xs text-gray-500">Amount Paid</div>
+
+                          {/* Price section - moves to bottom on small screens */}
+                          <div className="flex justify-between items-center lg:block lg:text-right lg:ml-4 pt-2 lg:pt-0 border-t lg:border-t-0 border-gray-200">
+                            <span className="text-sm text-gray-500 lg:hidden">Amount Paid:</span>
+                            <div className="text-right">
+                              <p className="text-lg font-bold text-green-600">{formatPrice(customer.sale_price)}</p>
+                              <p className="text-xs text-gray-500 hidden lg:block">Amount Paid</p>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -654,9 +661,9 @@ export default function ProfilePage() {
                   <div className="text-center py-12">
                     <Users className="h-16 w-16 text-gray-300 mx-auto mb-4" />
                     <h3 className="text-lg font-medium text-gray-900 mb-2">No customers yet</h3>
-                    <div className="text-gray-500">
+                    <p className="text-gray-500">
                       When you sell your first car, customer information will appear here.
-                    </div>
+                    </p>
                   </div>
                 )}
               </CardContent>
@@ -687,7 +694,7 @@ export default function ProfilePage() {
                     <div className="space-y-2">
                       <Label htmlFor="email">Email</Label>
                       <Input id="email" value={email} disabled className="bg-gray-50" />
-                      <div className="text-xs text-gray-500">Email cannot be changed</div>
+                      <p className="text-xs text-gray-500">Email cannot be changed</p>
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="phone">Phone (Optional)</Label>
