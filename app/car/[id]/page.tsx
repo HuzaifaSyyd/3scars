@@ -1012,105 +1012,101 @@ export default function CarDetailsPage() {
 
         {/* Document Modal */}
         <Dialog open={showDocumentModal} onOpenChange={setShowDocumentModal}>
-          <DialogContent className="max-w-4xl max-h-[90vh] p-0">
-            <DialogHeader>
-              <DialogTitle className="sr-only">{activeDocument?.name || "Document Viewer"}</DialogTitle>
-            </DialogHeader>
+  <DialogContent className="max-w-4xl w-full max-h-[90vh] p-0">
+    <DialogHeader>
+      <DialogTitle className="sr-only">{activeDocument?.name || "Document Viewer"}</DialogTitle>
+    </DialogHeader>
 
-            {activeDocument && (
-              <div className="relative h-full">
-                <div className="flex justify-between items-center p-4 border-b bg-white">
-                  <h3 className="text-lg font-semibold truncate">{activeDocument.name}</h3>
-                  <div className="flex items-center space-x-2">
-                    <Button variant="outline" size="sm" onClick={() => openInNewTab(activeDocument.url)}>
-                      <ExternalLink className="h-4 w-4 mr-2" />
-                      Open in New Tab
-                    </Button>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => downloadDocument(activeDocument.url, activeDocument.name)}
-                    >
-                      <Download className="h-4 w-4 mr-2" />
-                      Download
-                    </Button>
-                    <Button variant="ghost" size="sm" onClick={() => setShowDocumentModal(false)}>
-                      <X className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </div>
+    {activeDocument && (
+      <div className="relative h-full">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 border-b bg-white space-y-2 sm:space-y-0">
+          <h3 className="text-lg font-semibold truncate">{activeDocument.name}</h3>
+          <div className="flex flex-wrap sm:flex-nowrap items-center gap-2">
+            <Button variant="outline" size="sm" onClick={() => openInNewTab(activeDocument.url)}>
+              <ExternalLink className="h-4 w-4 mr-2" />
+              Open in New Tab
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => downloadDocument(activeDocument.url, activeDocument.name)}
+            >
+              <Download className="h-4 w-4 mr-2" />
+              Download
+            </Button>
+            <Button variant="ghost" size="sm" onClick={() => setShowDocumentModal(false)}>
+              <X className="h-4 w-4" />
+            </Button>
+          </div>
+        </div>
 
-                <div className="h-[70vh] overflow-auto bg-gray-50">
-                  {documentError ? (
-                    <div className="flex items-center justify-center h-full">
-                      <div className="text-center p-8">
-                        <AlertCircle className="h-16 w-16 text-red-300 mx-auto mb-4" />
-                        <p className="text-red-700 mb-2">Document Loading Error</p>
-                        <p className="text-red-500 text-sm mb-4">{documentError}</p>
-                        <div className="flex justify-center space-x-2">
-                          <Button variant="outline" onClick={() => openInNewTab(activeDocument.url)}>
-                            <ExternalLink className="h-4 w-4 mr-2" />
-                            Try Opening in New Tab
-                          </Button>
-                          <Button
-                            variant="outline"
-                            onClick={() => downloadDocument(activeDocument.url, activeDocument.name)}
-                          >
-                            <Download className="h-4 w-4 mr-2" />
-                            Download Instead
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-                  ) : isImageFile(activeDocument.url, activeDocument.type) ? (
-                    // Image document - show full size image
-                    <div className="flex items-center justify-center h-full p-4 bg-black">
-                      <img
-                        src={activeDocument.url || "/placeholder.svg"}
-                        alt={activeDocument.name}
-                        className="max-w-full max-h-full object-contain"
-                        onError={() => setDocumentError("Image could not be loaded.")}
-                        onLoad={() => console.log("Modal image loaded successfully:", activeDocument.url)}
-                      />
-                    </div>
-                  ) : isPdfFile(activeDocument.url, activeDocument.type) ? (
-                    // PDF document - show iframe
-                    <iframe
-                      src={activeDocument.url}
-                      className="w-full h-full border-0"
-                      title={activeDocument.name}
-                      onError={() => setDocumentError("PDF could not be loaded.")}
-                    />
-                  ) : (
-                    // Other document types - show message
-                    <div className="flex items-center justify-center h-full">
-                      <div className="text-center p-8">
-                        <FileText className="h-16 w-16 text-gray-300 mx-auto mb-4" />
-                        <p className="text-gray-700 mb-2">Document Preview Not Available</p>
-                        <p className="text-gray-500 text-sm mb-4">
-                          This document type cannot be previewed in the browser.
-                        </p>
-                        <div className="flex justify-center space-x-2">
-                          <Button variant="outline" onClick={() => openInNewTab(activeDocument.url)}>
-                            <ExternalLink className="h-4 w-4 mr-2" />
-                            Open in New Tab
-                          </Button>
-                          <Button
-                            variant="outline"
-                            onClick={() => downloadDocument(activeDocument.url, activeDocument.name)}
-                          >
-                            <Download className="h-4 w-4 mr-2" />
-                            Download
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-                  )}
+        <div className="h-[70vh] overflow-auto bg-gray-50">
+          {documentError ? (
+            <div className="flex items-center justify-center h-full">
+              <div className="text-center p-4">
+                <AlertCircle className="h-16 w-16 text-red-300 mx-auto mb-4" />
+                <p className="text-red-700 mb-2">Document Loading Error</p>
+                <p className="text-red-500 text-sm mb-4">{documentError}</p>
+                <div className="flex flex-wrap justify-center gap-2">
+                  <Button variant="outline" onClick={() => openInNewTab(activeDocument.url)}>
+                    <ExternalLink className="h-4 w-4 mr-2" />
+                    Try Opening in New Tab
+                  </Button>
+                  <Button
+                    variant="outline"
+                    onClick={() => downloadDocument(activeDocument.url, activeDocument.name)}
+                  >
+                    <Download className="h-4 w-4 mr-2" />
+                    Download Instead
+                  </Button>
                 </div>
               </div>
-            )}
-          </DialogContent>
-        </Dialog>
+            </div>
+          ) : isImageFile(activeDocument.url, activeDocument.type) ? (
+            <div className="flex items-center justify-center h-full p-2 bg-white">
+              <img
+                src={activeDocument.url || "/placeholder.svg"}
+                alt={activeDocument.name}
+                className="max-w-full max-h-full object-contain"
+                onError={() => setDocumentError("Image could not be loaded.")}
+              />
+            </div>
+          ) : isPdfFile(activeDocument.url, activeDocument.type) ? (
+            <iframe
+              src={activeDocument.url}
+              className="w-full h-full border-0"
+              title={activeDocument.name}
+              onError={() => setDocumentError("PDF could not be loaded.")}
+            />
+          ) : (
+            <div className="flex items-center justify-center h-full">
+              <div className="text-center p-4">
+                <FileText className="h-16 w-16 text-gray-300 mx-auto mb-4" />
+                <p className="text-gray-700 mb-2">Document Preview Not Available</p>
+                <p className="text-gray-500 text-sm mb-4">
+                  This document type cannot be previewed in the browser.
+                </p>
+                <div className="flex flex-wrap justify-center gap-2">
+                  <Button variant="outline" onClick={() => openInNewTab(activeDocument.url)}>
+                    <ExternalLink className="h-4 w-4 mr-2" />
+                    Open in New Tab
+                  </Button>
+                  <Button
+                    variant="outline"
+                    onClick={() => downloadDocument(activeDocument.url, activeDocument.name)}
+                  >
+                    <Download className="h-4 w-4 mr-2" />
+                    Download
+                  </Button>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    )}
+  </DialogContent>
+</Dialog>
 
         {/* Sold Modal */}
         <SoldCarModal car={car} isOpen={showSoldModal} onClose={() => setShowSoldModal(false)} onSold={handleSold} />
