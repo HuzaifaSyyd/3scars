@@ -120,6 +120,16 @@ export function AuthForms() {
 
         <Card className="shadow-2xl border-0 bg-white/80 backdrop-blur-sm">
           <CardHeader className="text-center pb-4">
+            <div className="flex items-center space-x-3 cursor-pointer" onClick={handleLogoClick}>
+            
+            <img
+              src="/3slogo.jpg"
+              alt="3S-CARS"
+              className="h-16"
+              
+            />
+            
+          </div>
             <CardTitle className="text-2xl">Welcome</CardTitle>
             <CardDescription>Sign in to your account or create a new one</CardDescription>
           </CardHeader>
