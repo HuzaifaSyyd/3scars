@@ -9,6 +9,9 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "3S-CARS",
+  icons: {
+      icon: { url: '/3slogo.jpg' }, // Or the path to your icon.png or other file
+    },
     
 }
 
