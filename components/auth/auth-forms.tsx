@@ -109,10 +109,7 @@ export function AuthForms() {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-white p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-purple-600 to-purple-700 rounded-2xl mb-4 shadow-lg">
-            <Car className="w-8 h-8 text-white" />
-          </div>
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">
+          <h1 className="text-3xl bg-gradient-to-r from-red-600 to-red-800 bg-clip-text text-transparent">
             3S-CARS
           </h1>
           <p className="text-gray-600 mt-2">Manage your car inventory with ease</p>
@@ -120,16 +117,6 @@ export function AuthForms() {
 
         <Card className="shadow-2xl border-0 bg-white/80 backdrop-blur-sm">
           <CardHeader className="text-center pb-4">
-            <div className="flex items-center space-x-3 cursor-pointer" onClick={handleLogoClick}>
-            
-            <img
-              src="/3slogo.jpg"
-              alt="3S-CARS"
-              className="h-16"
-              
-            />
-            
-          </div>
             <CardTitle className="text-2xl">Welcome</CardTitle>
             <CardDescription>Sign in to your account or create a new one</CardDescription>
           </CardHeader>
