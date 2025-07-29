@@ -1,4 +1,4 @@
-"use client"
+ "use client"
 
 import type React from "react"
 
@@ -109,7 +109,7 @@ export function AuthForms() {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-white p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-3xl bg-gradient-to-r from-red-600 to-red-800 bg-clip-text text-transparent">
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">
             3S-CARS
           </h1>
           <p className="text-gray-600 mt-2">Manage your car inventory with ease</p>
