@@ -33,7 +33,7 @@ export function Navbar() {
     if (user) {
       router.push("/dashboard")
     } else {
-      router.push("/auth")
+      router.push("/")
     }
   }
 
@@ -46,7 +46,13 @@ export function Navbar() {
               <div className="w-10 h-10 bg-gradient-to-r from-purple-600 to-purple-700 rounded-xl flex items-center justify-center shadow-lg">
                 <Car className="w-6 h-6 text-white" />
               </div>
-              <h1 className="text-xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">
+              <img
+                src="/3slogo.jpg"
+                alt="3S-CARS"
+                className="h-8"
+                
+              />
+              <h1 className="text-xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent hidden">
                 3S-CARS
               </h1>
             </div>
@@ -70,12 +76,14 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-3 cursor-pointer" onClick={handleLogoClick}>
-            <div className="w-10 h-10 bg-gradient-to-r from-purple-600 to-purple-700 rounded-xl flex items-center justify-center shadow-lg">
-              <Car className="w-6 h-6 text-white" />
-            </div>
-            <h1 className="text-xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">
-              3S-CARS
-            </h1>
+            
+            <img
+              src="/3slogo.jpg"
+              alt="3S-CARS"
+              className="h-16"
+              
+            />
+            
           </div>
 
           <div className="flex items-center space-x-4">
