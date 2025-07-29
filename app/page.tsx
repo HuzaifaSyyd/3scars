@@ -17,7 +17,16 @@ export default function HomePage() {
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-white">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600">Loading...</p>
+          <div className="flex items-center space-x-3">
+              
+              <img
+                src="/3slogo.jpg"
+                alt="3S-CARS"
+                className="h-16"
+                
+              />
+              
+            </div>
         </div>
       </div>
     </AuthGuard>
